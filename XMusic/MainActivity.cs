@@ -1,14 +1,31 @@
-﻿using Android.App;
-using Android.OS;
-using Android.Support.V7.App;
+﻿using System;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
 using Android.Runtime;
+using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
+using Android.OS;
+
+using XMusic.Audio;
+using XMusic.BroadcastRecievers;
+using XMusic;
 
 namespace XMusic
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true,
+        LaunchMode = LaunchMode.SingleInstance, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : AppCompatActivity, IJavaObject
     {
+        public static MainActivity Instance;
+
+        public bool IsBound = false;
+        public Intent AudioServiceIntent;
+        public static AudioServiceBinder Binder;
+
+        private AudioServiceConnection _connection;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -22,5 +39,12 @@ namespace XMusic
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        protected override void OnDestroy()
+        {
+            StartService(new Intent(Audio.AudioService.ActionTryKill));
+            base.OnDestroy();
+        }
+
     }
 }

@@ -71,9 +71,23 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\AudioService.cs" />
+    <Compile Include="Audio\AudioServiceBinder.cs" />
+    <Compile Include="Audio\AudioServiceCallback.cs" />
+    <Compile Include="Audio\AudioServiceConnection.cs" />
+    <Compile Include="BroadcastRecievers\AudioControlsBroadcastReceiver.cs" />
+    <Compile Include="BroadcastRecievers\AudioNoisyBroadcastReceiver.cs" />
+    <Compile Include="Helpers\Comparator.cs" />
+    <Compile Include="Interfaces\IMusicManager.cs" />
+    <Compile Include="Interfaces\IPlaylistManager.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Modelos\PlayList.cs" />
+    <Compile Include="Modelos\Song.cs" />
+    <Compile Include="MusicManager.cs" />
+    <Compile Include="PlaylistManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\BaseView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -110,13 +124,19 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
