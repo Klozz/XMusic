@@ -6298,6 +6298,12 @@ namespace XMusic
 			// aapt resource value: 0x7f0b003a
 			public const int path_password_strike_through = 2131427386;
 			
+			// aapt resource value: 0x7f0b003e
+			public const int permission_available_storage = 2131427390;
+			
+			// aapt resource value: 0x7f0b003f
+			public const int permissions_not_granted = 2131427391;
+			
 			// aapt resource value: 0x7f0b0026
 			public const int search_menu_title = 2131427366;
 			

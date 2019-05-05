@@ -45,8 +45,9 @@ namespace XMusic.View
 
         private MusicModelView()
         {
-  
-            SetQueueCommand = new Command(async () => {
+
+            SetQueueCommand = new Command(async () =>
+            {
                 DependencyService.Get<IMusicManager>().Init(
                     isPlaying =>
                     {
