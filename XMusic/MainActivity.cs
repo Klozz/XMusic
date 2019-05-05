@@ -94,7 +94,6 @@ namespace XMusic
             }
         }
 
-
         protected override void OnDestroy()
         {
             StartService(new Intent(Audio.AudioService.ActionTryKill));
