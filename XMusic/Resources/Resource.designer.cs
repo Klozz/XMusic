@@ -6839,6 +6839,9 @@ namespace XMusic
 			// aapt resource value: 0x7f0d000e
 			public const int CardView_Light = 2131558414;
 			
+			// aapt resource value: 0x7f0d0190
+			public const int MainTheme = 2131558800;
+			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;
 			
