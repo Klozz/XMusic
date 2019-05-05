@@ -15,7 +15,7 @@ using Android.Support.V4;
 using Android.Support.V4.App;
 using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
-using Android.Support.V7;
+using Android.Support.V7.Media;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
@@ -28,6 +28,7 @@ using static Android.Support.V4.Media.App.NotificationCompat;
 namespace XMusic.Audio
 {
     [Service]
+    [Android.Runtime.Register("android/media/AudioAttributes", DoNotGenerateAcw = true)]
     [IntentFilter(new string[] { ActionStart, ActionPlay, ActionPause, ActionNext, ActionPrev, ActionToggle, ActionStop, ActionTryKill })]
 
     public class AudioService : Service,
@@ -77,7 +78,6 @@ namespace XMusic.Audio
             InitializePlayer();
         }
 
-        [Obsolete]
         private void InitializePlayer()
         {
             _player?.Reset();
@@ -86,7 +86,7 @@ namespace XMusic.Audio
             _player = null;
             _player = new MediaPlayer();
             _player.SetWakeMode(ApplicationContext, WakeLockFlags.Partial);
-            _player.SetAudioStreamType(Stream.Music);
+            _player.SetAudioAttributes(new AudioAttributes.Builder().SetLegacyStreamType(Stream.Music).Build());
             _player.SetOnPreparedListener(this);
             _player.SetOnErrorListener(this);
             _player.SetOnCompletionListener(this);
@@ -244,7 +244,7 @@ namespace XMusic.Audio
                     PendingIntent pendingIntent = PendingIntent.GetActivity(ApplicationContext, 0, intent, 0);
 
                     _remoteComponentName = new ComponentName(PackageName, new AudioControlsBroadcastReceiver().ComponentName);
-                    _mediaSessionCompat = new MediaSessionCompat(ApplicationContext, "XamMusic", _remoteComponentName, pendingIntent);
+                    _mediaSessionCompat = new MediaSessionCompat(ApplicationContext, "XMusic", _remoteComponentName, pendingIntent);
                     _mediaControllerCompat = new MediaControllerCompat(ApplicationContext, _mediaSessionCompat.SessionToken);
                 }
 

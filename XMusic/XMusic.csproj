@@ -141,9 +141,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="View\Paginas.xaml">
       <Generator>UpdateDesignTimeXaml</Generator>
